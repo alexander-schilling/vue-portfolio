@@ -1,0 +1,34 @@
+{
+  "views": {
+    "error404": "Error 404",
+    "home": "Inicio",
+    "inDevelopment": "En desarrollo"
+  },
+  "navbar": {
+    "about": "Acerca",
+    "resume": "CV",
+    "contact": "Contacto",
+    "language": "Lenguaje",
+    "linkedin": "LinkedIn",
+    "github": "Github"
+  },
+  "about": {
+    "title": "Acerca de mí",
+    "description": "Hola, mi nombre es Alexander, tengo 23 años y soy de Santiago, Chile.",
+    "currently": "Actualmente estoy estudiando Analista Programador y buscando un trabajo. Como hobby, he creado y modificado recursos de <a href=\"https://fivem.net/\">FiveM</a> para un servidor de Roleplay, el cual he sido el desarrollador principal desde marzo del 2019. Puedes visitar el servidor de discord <a href=\"https://discord.gg/hispano\">aquí</a>."
+  },
+  "skills": {
+    "title": "Habilidades",
+    "skill": "Habilidad",
+    "level": "Nivel",
+    "programming": "Programación",
+    "misc": "Misceláneo",
+    "other": "Otros"
+  },
+  "dev": {
+    "inDevelopment": "Sitio web en construcción"
+  },
+  "home": {
+    "welcome": "¡Bienvenid@!"
+  }
+}
