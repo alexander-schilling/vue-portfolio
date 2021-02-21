@@ -24,6 +24,11 @@ export default {
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+@font-face {
+  font-family: "Consolas";
+  src: url("./assets/fonts/consola.ttf") format("truetype");
+}
+
 #app {
   /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
   font-family: "Roboto", sans-serif;

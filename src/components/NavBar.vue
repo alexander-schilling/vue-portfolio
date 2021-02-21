@@ -1,8 +1,20 @@
 <template>
   <b-navbar id="navBar" toggleable="lg" type="dark" variant="dark" fixed="top">
     <b-navbar-brand href="/">
-      <b-img src="~@/assets/img/logo.png" alt="AS" fluid />
-      > Alexander Schilling<span :style="{ opacity: inputOpacity }">_</span>
+      <vue-typed-js
+        :strings="['Alexander', 'Schilling']"
+        :loop="true"
+        :showCursor="false"
+        :typeSpeed="50"
+        :backSpeed="100"
+        :backDelay="5000"
+      >
+        <span>
+          <b-img src="~@/assets/img/logo.png" alt="AS" fluid />
+          > <span class="typing"></span
+          ><span :style="{ opacity: inputOpacity }">_</span>
+        </span>
+      </vue-typed-js>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -16,7 +28,7 @@
           {{ $t("navbar.about") }}
         </b-nav-item>
 
-        <b-nav-item class="text-center">
+        <b-nav-item class="text-center" :href="resume">
           <font-awesome-icon icon="user-tie" size="lg" />
           <br />
           {{ $t("navbar.resume") }}
@@ -81,8 +93,13 @@ export default {
       },
     };
   },
+  computed: {
+    resume() {
+      return this.$i18n.t("resume.href");
+    },
+  },
   methods: {
-    consoleInputEffect: function () {
+    consoleInputEffect() {
       setTimeout(() => {
         this.inputOpacity == 255
           ? (this.inputOpacity = 0)
@@ -90,7 +107,7 @@ export default {
         this.consoleInputEffect();
       }, 750);
     },
-    onClick: function () {
+    onClick() {
       this.navCollapseToggled = !this.navCollapseToggled;
       if (this.navCollapseToggled) {
         this.navCollapse.backgroundColor = `rgba(34, 31, 34, 1.0) !important`;
@@ -111,7 +128,7 @@ export default {
 }
 
 #navBar img {
-  height: 55px;
+  height: 3rem;
 }
 
 #app {

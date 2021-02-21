@@ -3,6 +3,7 @@ import Vue from "vue";
 import "./plugins/bootstrap-vue";
 import i18n from "./plugins/i18n";
 import "./plugins/font-awesome";
+import "./plugins/vue-typed-js";
 
 import App from "./App.vue";
 import router from "./router";
