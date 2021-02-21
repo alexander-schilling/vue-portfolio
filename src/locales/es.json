@@ -12,10 +12,20 @@
     "linkedin": "LinkedIn",
     "github": "Github"
   },
+  "buttons": {
+    "close": "Cerrar",
+    "expand": "Expandir"
+  },
+  "dev": {
+    "inDevelopment": "Sitio web en construcción"
+  },
+  "home": {
+    "welcome": "¡Hola!"
+  },
   "about": {
     "title": "Acerca de mí",
     "description": "Hola, mi nombre es Alexander, tengo 23 años y soy de Santiago, Chile.",
-    "currently": "Actualmente estoy estudiando Analista Programador y buscando un trabajo. Como hobby, he creado y modificado recursos de <a href=\"https://fivem.net/\">FiveM</a> para un servidor de Roleplay, el cual he sido el desarrollador principal desde marzo del 2019. Puedes visitar el servidor de discord <a href=\"https://discord.gg/hispano\">aquí</a>."
+    "currently": "Actualmente estoy estudiando Analista Programador y buscando un trabajo. Como hobby, he creado y modificado recursos de <a href=\"https://fivem.net/\">FiveM</a> para un servidor de Roleplay, el cual he sido el desarrollador principal desde marzo del 2019, trabajando en Lua, HTML, Javascript, CSS, C# y bases de datos MySQL. Puedes visitar el <a href=\"https://discord.gg/hispano\">servidor de discord</a> o visitar el <a href=\"https://www.comunidad-hispano.com/\">sitio web</a>. A lo largo de estos años he sido partícipe en distintas comunidades de servidores de videojuegos, como moderador, administrador y/o programador, tales como <a href=\"https://www.sa-mp.com/\">GTA:SAMP</a> (Pawno Scripting), Minecraft (Java) y Rust <a href=\"https://umod.org/\">Oxidemod</a> (C#); en conjunto a esto, he trabajado con bases de datos MySQL, SQLite, H2, etc. y administrado servidores con el sistema operativo Linux, el cual la mayoría de estos servidores usan.<br>También, me gusta la edición de imágenes y la creación y edición de videos.<br>Cabe mencionar que varios proyectos no los he subido a Github o se perdieron antes de que supiera de la existencia de esta herramienta. Si los encuentro, los subiré acá o los proyectos de código a Github."
   },
   "skills": {
     "title": "Habilidades",
@@ -25,10 +35,65 @@
     "misc": "Misceláneo",
     "other": "Otros"
   },
-  "dev": {
-    "inDevelopment": "Sitio web en construcción"
-  },
-  "home": {
-    "welcome": "¡Bienvenid@!"
+  "portfolio": {
+    "title": "Portafolio",
+    "catalog": {
+      "title": "Catálogo vehicular",
+      "description": "Este es un catálogo que hice para el servidor Roleplay (backend en Lua), obtiene todos los vehículos disponibles y sus datos de una base de datos MySQL, además, recopilé datos de GTABase para mostrar información adicional.",
+      "caption1": "Pestaña principal",
+      "text1": "Muestra todas las categorías y sus vehículos, junto con algunos detalles importantes que pueden interesar al jugador, cada vehículo tiene una imagen y un botón para ver los detalles. La lista de vehículos se puede ordenar por nombre, precio o stock.",
+      "caption2": "Modal del vehículo",
+      "text2": "El modal muestra la información detallada del vehículo.",
+      "caption3": "Modal del vehículo (cont.)",
+      "text3": "El modal muestra la información detallada del vehículo."
+    },
+    "shop": {
+      "title": "Tienda",
+      "description": "Esta es una tienda que hice para el servidor de Roleplay (backend en Lua), cada tienda tiene artículos específicos y son administrados por el usuario. Cada artículo disponible se puede agregar al carrito, este se actualiza automáticamente y muestra los detalles en una tabla al usuario, no permite al usuario agregar más que el stock disponible, y para ciertos artículos únicos, no permite agregar más de uno.",
+      "caption1": "Pestaña de tienda",
+      "text1": "Muestra el nombre de la tienda, todos los artículos disponibles, su precio y stock, cada artículo se puede agregar o eliminar desde este menú.",
+      "caption2": "Pestaña de tienda",
+      "text2": "Muestra el nombre de la tienda, todos los artículos disponibles, su precio y stock, cada artículo se puede agregar o eliminar desde este menú.",
+      "caption3": "Pestaña del carrito",
+      "text3": "Muestra todos los artículos agregados, el precio unitario, el stock, la cantidad a comprar (modificable), el precio final y un botón para eliminar el artículo. Al final de la tabla, muestra el precio final y dos botones en la parte inferior, vaciar carrito y comprar."
+    },
+    "pass": {
+      "title": "Pase Premium",
+      "description": "Para beneficiar a algunos de nuestros donadores y jugadores simultáneos, hice un sistema de \"pase de batalla\" (backend en Lua), los datos de cada elemento se almacenan en un archivo configurable y los datos del jugador se almacenan en una tabla en una base de datos MySQL , almacenando la recompensa del último jugador y su tiempo de enfriamiento. Además, tiene una pestaña de información que muestra todas las recompensas para nuestros donadores.",
+      "caption1": "Pestaña principal",
+      "text1": "Muestra todas las recompensas, con un botón para reclamadas, reclamables y no disponibles. Se puede desplazar hasta el nivel final.",
+      "caption2": "Pestaña de información",
+      "text2": "Muestra todas las recompensas para nuestros seguidores."
+    },
+    "images_large": {
+      "title": "Carteles publicitarios",
+      "description": "En mi tiempo libre, hice algunos carteles publicitarios para algunos miembros de mi familia, nada demasiado elegante ni profesional."
+    },
+    "images_wide": {
+      "title": "Fondos de pantalla",
+      "description": "Para algunos de mis proyectos personales, he creado fondos para transmisiones o videos."
+    },
+    "animation": {
+      "title": "Animaciones",
+      "description": "También para proyectos personales, hice algunas animaciones en Adobe After Effects, las he usado en transmisiones y videos que he creado.",
+      "caption1": "Notificación de Twitch",
+      "text1": "Animación simple para una notificación de Twitch, utilizada para suscripciones, seguimientos y otros."
+    },
+    "rdr2review": {
+      "title": "Red Dead Redemption 2 Review",
+      "description": "Siempre me han gustado las reviews/reseñas de juegos y quería experimentar con la creación de una, jugué, capturé imágenes del juego, creé, edité, escribí y le di voz al video. Para este tipo de proyectos, utilizo Adobe Premiere Pro, After Effects, Photoshop, Illustrator y Audacity."
+    },
+    "cp2077hypeometro": {
+      "title": "Hype-ómetro: Cyberpunk 2077",
+      "description": "Al igual que las reviews, me encantan las discusiones de juegos, así que, con un par de amigos discutimos uno de los juegos más destacados lanzados en 2020, antes de que saliera, creé y edité el video, la discusión es bastante genérica, pero genuina. Se supone que el nombre Hype-ómetro significa la cantidad de hype creada por el juego y la discusión que tuvimos al respecto."
+    },
+    "daysgonehypeometro": {
+      "title": "Hype-ómetro: Days Gone",
+      "description": "Lo mismo que el Hype-ómetro de Cyberpunk 2077, pero sobre Days Gone."
+    },
+    "cp2077instagram": {
+      "title": "Publicidad de Instagram",
+      "description": "Para los videos anteriores, hice algunas animaciones para Instagram."
+    }
   }
 }

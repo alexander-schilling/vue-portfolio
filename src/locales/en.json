@@ -12,10 +12,20 @@
     "linkedin": "LinkedIn",
     "github": "Github"
   },
+  "buttons": {
+    "close": "Close",
+    "expand": "Expand"
+  },
+  "dev": {
+    "inDevelopment": "Website in development"
+  },
+  "home": {
+    "welcome": "Hi!"
+  },
   "about": {
     "title": "About me",
-    "description": "Hi, my name is Alexander, I'm 23 years old and I live in Santiago, Chile.",
-    "currently": "I'm currently studying Analyst Programmer and looking for a job. As a hobby, I've created and modified <a href=\"https://fivem.net/\">FiveM</a> resources for a Roleplay server in which I've been the main developer since March 2019. You can visit the discord server <a href=\"https://discord.gg/hispano\">here</a>."
+    "description": "My name is Alexander, I'm 23 years old and I live in Santiago, Chile.",
+    "currently": "I'm currently studying Analyst Programmer and looking for a job. As a hobby, I've created and modified <a href=\"https://fivem.net/\">FiveM</a> resources for a Roleplay server in which I've been the lead developer since March 2019, working in Lua, HTML, Javascript, CSS, C# and MySQL databases. You can visit the <a href=\"https://discord.gg/hispano\">discord server</a> or visit the <a href=\"https://www.comunidad-hispano.com/\">website</a>. Throughout these years I've been a participant in different video game server communities, as a moderator, administrator and/or programmer, such as <a href=\"https://www.sa-mp.com/\">GTA:SAMP</a> (Pawno Scripting), Minecraft (Java) and Rust <a href=\"https://umod.org/\">Oxidemod</a> (C#); along with his, I've worked with MySQL, SQLite, H2, and other databases, and managed servers with Linux, which most of these servers use.<br>Also, I like image editing and video creation and editing.<br>It's worth to mention that a lot of my projects I haven't uploaded them to Github or they were lost before I knew that this tool even existed. If I find them, I will upload them here or coding projects to Github."
   },
   "skills": {
     "title": "Skills",
@@ -25,10 +35,65 @@
     "misc": "Miscellaneous",
     "other": "Others"
   },
-  "dev": {
-    "inDevelopment": "Website in development"
-  },
-  "home": {
-    "welcome": "Welcome!"
+  "portfolio": {
+    "title": "Portfolio",
+    "catalog": {
+      "title": "Car catalog",
+      "description": "This is a catalog that I made for the Roleplay server (Lua backend), it gets all the available vehicles and their data from the MySQL database, alongside, I collected data from GTABase to display additional information.",
+      "caption1": "Main tab",
+      "text1": "It displays all the categories and their vehicles, along with some important details that may interest the player, every vehicle has a picture and a button to see the details. The vehicle list can be ordered by name, price or stock.",
+      "caption2": "Vehicle modal",
+      "text2": "The modal displays detailed information of the vehicle.",
+      "caption3": "Vehicle modal (cont.)",
+      "text3": "The modal displays detailed information of the vehicle."
+    },
+    "shop": {
+      "title": "Shop",
+      "description": "This is a shop that I made for the Roleplay server (Lua backend), every shop has specific items and are user managed. Every available item can be added to the cart, this is updated automatically and shows the details in a table to the user, it doesn't allow the user to add more than the available stock, and for certain unique items, it doesn't allow to add more than one.",
+      "caption1": "Shop tab",
+      "text1": "It displays the shop name, all the available items, their price and stock, each item can be added or removed from this menu.",
+      "caption2": "Shop tab",
+      "text2": "It displays the shop name, all the available items, their price and stock, each item can be added or removed from this menu.",
+      "caption3": "Cart tab",
+      "text3": "It displays all the added items, the unitary price, the stock, quantity to buy (modifiable), the final price, and a button to remove the item. At the end of the table, it displays the final price, and two buttons at the bottom, empty cart and buy."
+    },
+    "pass": {
+      "title": "Premium Pass",
+      "description": "To benefit some of our supporters and regular players, I made a \"battle pass\" system (Lua backend), the data for each item is stored in a configurable file, and the player data is stored in a table in a MySQL database, keeping the last player reward and their cooldown. Also, it has an info tab that displays all the rewards for our supporters.",
+      "caption1": "Main tab",
+      "text1": "It displays all the rewards, with a button for claimed, claimable and unavailable. It can be scrolled all the way to the final tier.",
+      "caption2": "Info tab",
+      "text2": "It displays all the rewards for our supporters."
+    },
+    "images_large": {
+      "title": "Advertising posters",
+      "description": "In my spare time, I've made some advertising posters for some of my family members, nothing too fancy or professional."
+    },
+    "images_wide": {
+      "title": "Backgrounds",
+      "description": "For some of my personal projects, I've made backgrounds for streams or videos."
+    },
+    "animation": {
+      "title": "Animations",
+      "description": "Also for personal projects, I've made some animations in Adobe After Effects, I've used them in streams and videos I've created.",
+      "caption1": "Twitch notification",
+      "text1": "Simple animation for a twitch notification, used for subscriptions, follows and others."
+    },
+    "rdr2review": {
+      "title": "Red Dead Redemption 2 Review",
+      "description": "I've always enjoyed game reviews and I wanted to experiment with the creation of one, I played, captured game footage, created, edited, wrote and voiced the video. For this types of projects, I use Adobe Premiere Pro, After Effects, Photoshop, Illustrator and Audacity."
+    },
+    "cp2077hypeometro": {
+      "title": "Hype-meter: Cyberpunk 2077",
+      "description": "Same as reviews, I love game discussions, so, with a couple of friends we discussed one of the biggest games released in 2020, before it came out, I created and edited the video, the discussion is pretty generic, but genuine. The name Hype-meter is supposed to mean the amount of hype created by the game and the discussion we had about it."
+    },
+    "daysgonehypeometro": {
+      "title": "Hype-meter: Days Gone",
+      "description": "Same as the Cyberpunk 2077 Hype-meter, but about Days Gone."
+    },
+    "cp2077instagram": {
+      "title": "Instagram advertising",
+      "description": "For the previous videos, I've made some animations for Instagram."
+    }
   }
 }

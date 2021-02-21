@@ -1,11 +1,14 @@
 <template>
   <b-container>
-    <b-row>
+    <b-row class="mb-3">
       <b-col>
-        <h1>{{ $t("skills.title") }}</h1>
+        <h1>
+          <font-awesome-icon :icon="['fas', 'brain']" />
+          {{ $t("skills.title") }}
+        </h1>
       </b-col>
     </b-row>
-    <b-row>
+    <b-row cols="1" cols-xs="1" cols-sm="1" cols-md="1" cols-lg="2" cols-xl="3">
       <b-col>
         <h3>{{ $t("skills.programming") }}</h3>
         <skills-table :items="programming"></skills-table>
@@ -45,10 +48,11 @@ export default {
         { skill: "Linux", level: 3 },
         { skill: "Oracle", level: 2 },
         { skill: "Vue.js", level: 2 },
+        { skill: "Unity 3D", level: 2 },
       ],
       other: [
         { skill: "Adobe Photoshop", level: 4 },
-        { skill: "Adobe Premiere", level: 3 },
+        { skill: "Adobe Premiere Pro", level: 3 },
         { skill: "Adobe After Effects", level: 3 },
         { skill: "Adobe Illustrator", level: 1 },
       ],

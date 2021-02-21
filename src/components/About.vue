@@ -1,8 +1,10 @@
 <template>
-  <b-container class="about">
+  <b-container>
     <b-row>
       <b-col>
-        <h1>{{ $t("about.title") }}</h1>
+        <h1 id="about" class="mb-3">
+          <font-awesome-icon :icon="['fas', 'user']" /> {{ $t("about.title") }}
+        </h1>
       </b-col>
     </b-row>
     <b-row>

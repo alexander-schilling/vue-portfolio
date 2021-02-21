@@ -1,9 +1,9 @@
 <template>
   <span>
-    <span v-for="index in level" :key="index">
+    <span v-for="index in level" :key="'complete-lvl-' + index">
       <font-awesome-icon :icon="['fas', 'circle']" />
     </span>
-    <span v-for="index in maxLevel - level" :key="index">
+    <span v-for="index in maxLevel - level" :key="'incomplete-lvl-' + index">
       <font-awesome-icon :icon="['far', 'circle']" />
     </span>
   </span>

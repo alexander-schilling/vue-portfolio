@@ -22,7 +22,7 @@ import SkillLevel from "./SkillLevel.vue";
 export default {
   props: {
     fields: {
-      type: Object,
+      type: Array,
       default() {
         return [
           { key: "skill", label: this.$i18n.t("skills.skill") },
@@ -31,7 +31,7 @@ export default {
       },
     },
     items: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },

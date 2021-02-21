@@ -27,6 +27,6 @@ export default {
 }
 
 #app {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 </style>
