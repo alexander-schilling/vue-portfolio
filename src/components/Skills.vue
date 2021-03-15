@@ -51,6 +51,7 @@ export default {
         { skill: "Unity 3D", level: 2 },
       ],
       other: [
+        { skill: "Microsoft Office", level: 4 },
         { skill: "Adobe Photoshop", level: 4 },
         { skill: "Adobe Premiere Pro", level: 3 },
         { skill: "Adobe After Effects", level: 3 },

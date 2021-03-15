@@ -9,6 +9,13 @@ export default {
   metaInfo: {
     title: "Alexander Schilling",
     titleTemplate: "%s | AS",
+    meta: [
+      { name: "og:type", content: "website" },
+      { name: "og:url", content: "https://alexanderschilling.cl" },
+      { name: "og:title", content: "Alexander Schilling" },
+      { name: "og:description", content: "Personal website" },
+      { name: "og:image", content: "https://alexanderschilling.cl/img/bg.png" },
+    ],
   },
   mounted() {
     this.$store.dispatch("setLocale", {

@@ -45,7 +45,7 @@
 
         <b-nav-item
           class="text-center"
-          href="https://www.linkedin.com/in/alexander-schilling-miranda-41b090149/"
+          href="https://www.linkedin.com/in/alexander-schilling-miranda"
         >
           <font-awesome-icon :icon="['fab', 'linkedin']" size="lg" />
           <br />
