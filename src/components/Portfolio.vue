@@ -3,7 +3,7 @@
     <b-row class="mb-3">
       <b-col>
         <h1>
-          <font-awesome-icon :icon="['fas', 'briefcase']" />
+          <font-awesome-icon :icon="['fas', 'folder-open']" />
           {{ $t("portfolio.title") }}
         </h1>
       </b-col>

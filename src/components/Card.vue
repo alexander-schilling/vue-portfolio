@@ -158,5 +158,13 @@ export default {
 .carousel-caption {
   text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black,
     1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+  background-color: rgba(0, 0, 0, 0.33);
+  font-weight: bolder;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+}
+
+.carousel-caption h3 {
+  font-weight: 600;
 }
 </style>

@@ -8,10 +8,14 @@
         </h1>
       </b-col>
     </b-row>
-    <b-row cols="1" cols-xs="1" cols-sm="1" cols-md="1" cols-lg="2" cols-xl="3">
+    <b-row cols="1" cols-xs="1" cols-sm="1" cols-md="1" cols-lg="2" cols-xl="4">
       <b-col>
         <h3>{{ $t("skills.programming") }}</h3>
         <skills-table :items="programming"></skills-table>
+      </b-col>
+      <b-col>
+        <h3>{{ $t("skills.frameworks") }}</h3>
+        <skills-table :items="frameworks"></skills-table>
       </b-col>
       <b-col>
         <h3>{{ $t("skills.misc") }}</h3>
@@ -42,12 +46,16 @@ export default {
         { skill: "Python", level: 3 },
         { skill: "C#", level: 3 },
       ],
+      frameworks: [
+        { skill: "React", level: 4 },
+        { skill: "React Native", level: 4 },
+        { skill: "Vue.js", level: 3 },
+      ],
       misc: [
         { skill: "Windows", level: 5 },
         { skill: "MySQL", level: 4 },
         { skill: "Linux", level: 3 },
         { skill: "Oracle", level: 2 },
-        { skill: "Vue.js", level: 2 },
         { skill: "Unity 3D", level: 2 },
       ],
       other: [

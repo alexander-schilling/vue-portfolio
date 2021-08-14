@@ -10,6 +10,7 @@ import {
   faCircle,
   faBrain,
   faBriefcase,
+  faFolderOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCircle as faCircleRegular } from "@fortawesome/free-regular-svg-icons";
@@ -22,7 +23,8 @@ library.add(
   faCopyright,
   faCircle,
   faBrain,
-  faBriefcase
+  faBriefcase,
+  faFolderOpen
 );
 library.add(faLinkedin, faGithub);
 library.add(faCircleRegular);

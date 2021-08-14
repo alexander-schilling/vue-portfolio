@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <p class="text-right">
     <span v-for="index in level" :key="'complete-lvl-' + index">
       <font-awesome-icon :icon="['fas', 'circle']" />
     </span>
@@ -10,7 +10,7 @@
     >
       <font-awesome-icon :icon="['far', 'circle']" />
     </span>
-  </span>
+  </p>
 </template>
 
 <script>
