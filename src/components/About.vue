@@ -11,6 +11,7 @@
       <b-col>
         <p>{{ $t("about.description") }}</p>
         <p v-html="$t('about.currently')"></p>
+        <p v-html="$t('about.status')"></p>
       </b-col>
     </b-row>
   </b-container>

@@ -28,15 +28,39 @@
   "about": {
     "title": "About me",
     "description": "My name is Alexander, I'm 23 years old and I live in Santiago, Chile.",
-    "currently": "I'm currently studying Analyst Programmer and looking for a job. As a hobby, I've created and modified <a href=\"https://fivem.net/\">FiveM</a> resources for a Roleplay server in which I've been the lead developer since March 2019, working in Lua, HTML, Javascript, CSS, C# and MySQL databases. You can visit the <a href=\"https://discord.gg/hispano\">discord server</a> or the <a href=\"https://www.comunidad-hispano.com/\">website</a>. Throughout these years I've been a participant in different video game server communities, as a moderator, administrator and/or programmer, such as <a href=\"https://www.sa-mp.com/\">GTA:SAMP</a> (Pawno Scripting), Minecraft (Java) and Rust <a href=\"https://umod.org/\">Oxidemod</a> (C#); along with this, I've worked with MySQL, SQLite, H2, and other databases, and managed servers with Linux, which most of these servers use.<br>Also, I like image editing and video creation and editing.<br>It's worth to mention that a lot of my projects I haven't uploaded them to Github or they were lost before I knew that this tool even existed. If I find them, I will upload them here or coding projects to Github."
+    "currently": "I'm an Analyst Programmer and Informatics Engineering student. As a hobby, I've created and modified <a href=\"https://fivem.net/\">FiveM</a> resources for a Roleplay server in which I've been the lead developer since March 2019, working in Lua, HTML, Javascript, CSS, C# and MySQL databases. You can visit the <a href=\"https://discord.gg/hispano\">discord server</a> or the <a href=\"https://www.comunidad-hispano.com/\">website</a>. Throughout these years I've been a participant in different video game server communities, as a moderator, administrator and/or programmer, such as <a href=\"https://www.sa-mp.com/\">GTA:SAMP</a> (Pawno Scripting), Minecraft (Java) and Rust <a href=\"https://umod.org/\">Oxidemod</a> (C#); along with this, I've worked with MySQL, SQLite, H2, and other databases, and managed servers with Linux, which most of these servers use.<br>Also, I like image editing and video creation and editing.<br>It's worth to mention that a lot of my projects I haven't uploaded them to Github or they were lost before I knew that this tool even existed. If I find them, I will upload them here or coding projects to Github.",
+    "status": "I'm currently working as a part-time <b>Full-Stack Software Developer</b> at <a href=\"https://nutrial.us/\">Nutrialus</a>"
   },
   "skills": {
     "title": "Skills",
     "skill": "Skill",
     "level": "Level",
     "programming": "Programming",
+    "frameworks": "Web frameworks",
     "misc": "Miscellaneous",
     "other": "Others"
+  },
+  "work": {
+    "title": "Work Experience",
+    "nutrialus": {
+      "title": "Nutrialus",
+      "subtitle": "Full-Stack Software Developer",
+      "description": "<i>Nutrialus, the software that automates the nutritional assessment of your patients and helps you easily develop a personalized meal plan.</i> I joined Nutrialus for 3 months doing an internship, working as a Full-Stack Software Developer, after the internship was over, I was hired to do the same job, but part-time.",
+      "others": [
+        "Development of a Web application for professional nutritionists:<br />· Development environment: Ruby on Rails + React<br />· Relational database: PostgreSQL<br />· Non-relational databases: Elasticsearch, Redis",
+        "Mobile application for professional nutritionists and their patients:<br />· Development environment: React Native"
+      ],
+      "date": "april 2021 - present"
+    },
+    "hispano": {
+      "title": "Hispano Community",
+      "subtitle": "Lead developer - Co-Founder (As a hobby)",
+      "description": "<i>Gaming community founded in Latin America, in march 2019, with more than 1000 active players per month.</i> I was part of the foundation of the community, in which I have been an active participant in its development and growth since then. I have done this as a hobby.",
+      "others": [
+        "FiveM Roleplay server development:<br />· Development environment: Lua, JavaScript, C #, HTML, CSS, Vue.js<br />· Relational databases: MySQL"
+      ],
+      "date": "march 2019 - present"
+    }
   },
   "portfolio": {
     "title": "Portfolio",

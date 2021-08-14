@@ -1,5 +1,5 @@
 <template>
-  <div class="Home">
+  <span class="Home">
     <NavBar />
 
     <Jumbotron />
@@ -7,10 +7,12 @@
     <hr />
     <Skills />
     <hr />
+    <Work />
+    <hr />
     <Portfolio />
 
     <Footer />
-  </div>
+  </span>
 </template>
 
 <script>
@@ -18,6 +20,7 @@ import NavBar from "@/components/NavBar.vue";
 import Jumbotron from "@/components/Jumbotron.vue";
 import About from "@/components/About.vue";
 import Skills from "@/components/Skills.vue";
+import Work from "@/components/Work.vue";
 import Portfolio from "@/components/Portfolio.vue";
 import Footer from "@/components/Footer.vue";
 
@@ -26,8 +29,9 @@ export default {
   components: {
     NavBar,
     Jumbotron,
-    Skills,
     About,
+    Skills,
+    Work,
     Portfolio,
     Footer,
   },
