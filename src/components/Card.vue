@@ -9,10 +9,11 @@
         @sliding-end="onSlideEnd"
       >
         <template v-for="(image, index) in images">
-          <b-carousel-slide
-            :key="'carousel-slide' + index"
-            :img-src="image.src"
-          ></b-carousel-slide>
+          <b-carousel-slide :key="'carousel-slide' + index">
+            <template #img>
+              <b-img :src="image.src" fluid center></b-img>
+            </template>
+          </b-carousel-slide>
         </template>
       </b-carousel>
 
