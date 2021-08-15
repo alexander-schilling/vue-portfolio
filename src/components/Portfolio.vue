@@ -8,20 +8,6 @@
         </h1>
       </b-col>
     </b-row>
-    <!--<b-row cols="1" cols-lg="2">
-      <b-col
-        v-for="(card, index) in cards"
-        :key="'card-col-' + index"
-        no-gutters
-        class="mb-2"
-      >
-        <portfolio-card
-          :images="card.images"
-          :title="card.title"
-          :description="card.description"
-        ></portfolio-card>
-      </b-col>
-    </b-row>-->
     <b-row>
       <b-card-group columns>
         <template v-for="(card, index) in cards">
@@ -53,6 +39,148 @@ export default {
   computed: {
     cards() {
       return [
+        {
+          title: this.$i18n.t("portfolio.nutrial_mobile.title"),
+          description: this.$i18n.t("portfolio.nutrial_mobile.description"),
+          images: [
+            /*
+              Light Theme
+            */
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/light/patient_home.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_patient_home"
+              ),
+              text: this.$i18n.t("portfolio.nutrial_mobile.text_patient_home"),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/light/patient_meals.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_patient_meals"
+              ),
+              text: this.$i18n.t("portfolio.nutrial_mobile.text_patient_meals"),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/light/patient_charts.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_patient_charts"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_patient_charts"
+              ),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/light/menu.png"),
+              caption: this.$i18n.t("portfolio.nutrial_mobile.caption_menu"),
+              text: this.$i18n.t("portfolio.nutrial_mobile.text_menu"),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/light/change_password.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_change_password"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_change_password"
+              ),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/light/nutritionist_home.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_nutritionist_home"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_nutritionist_home"
+              ),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/light/nutritionist_patients.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_nutritionist_patients"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_nutritionist_patients"
+              ),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/light/nutritionist_patient.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_nutritionist_patient"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_nutritionist_patient"
+              ),
+            },
+            /*
+              Dark Theme
+            */
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/dark/change_theme.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_change_theme"
+              ),
+              text: this.$i18n.t("portfolio.nutrial_mobile.text_change_theme"),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/dark/patient_home.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_patient_home"
+              ),
+              text: this.$i18n.t("portfolio.nutrial_mobile.text_patient_home"),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/dark/patient_meals.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_patient_meals"
+              ),
+              text: this.$i18n.t("portfolio.nutrial_mobile.text_patient_meals"),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/dark/patient_charts.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_patient_charts"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_patient_charts"
+              ),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/dark/change_password.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_change_password"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_change_password"
+              ),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/dark/nutritionist_home.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_nutritionist_home"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_nutritionist_home"
+              ),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/dark/nutritionist_patients.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_nutritionist_patients"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_nutritionist_patients"
+              ),
+            },
+            {
+              src: require("@/assets/img/portfolio/nutrial_mobile/dark/nutritionist_patient.png"),
+              caption: this.$i18n.t(
+                "portfolio.nutrial_mobile.caption_nutritionist_patient"
+              ),
+              text: this.$i18n.t(
+                "portfolio.nutrial_mobile.text_nutritionist_patient"
+              ),
+            },
+          ],
+        },
         {
           title: this.$i18n.t("portfolio.catalog.title"),
           description: this.$i18n.t("portfolio.catalog.description"),

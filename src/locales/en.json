@@ -47,7 +47,7 @@
       "subtitle": "Full-Stack Software Developer",
       "description": "<i>Nutrialus, the software that automates the nutritional assessment of your patients and helps you easily develop a personalized meal plan.</i> I joined Nutrialus for 3 months doing an internship, working as a Full-Stack Software Developer, after the internship was over, I was hired to do the same job, but part-time.",
       "others": [
-        "Development of a Web application for professional nutritionists:<br />· Development environment: Ruby on Rails + React<br />· Relational database: PostgreSQL<br />· Non-relational databases: Elasticsearch, Redis",
+        "Development of a Web application for professional nutritionists:<br />· Development environment: Ruby on Rails + React<br />· Relational database: PostgreSQL<br />· Engines/Databases: Elasticsearch, Redis",
         "Mobile application for professional nutritionists and their patients:<br />· Development environment: React Native"
       ],
       "date": "april 2021 - present"
@@ -64,6 +64,28 @@
   },
   "portfolio": {
     "title": "Portfolio",
+    "nutrial_mobile": {
+      "title": "Nutrialus Mobile App",
+      "description": "I've been developing the Nutrialus Mobile App in React Native since my internship with them, it currently displays data for the patient, the meals plan, charts and a settings menu, allowing for a password change, logout and switch between light and dark theme. The app was then updated to support a patients index for the nutritionists, allowing them to see how their patient sees the app.",
+      "caption_patient_home": "Patient Home",
+      "text_patient_home": "The patient home view displays the current date, the next meal, with an updating component that shows the next meal with remaining time. The next two windows display the energy and macronutrients and finally their nutritionist.",
+      "caption_patient_meals": "Patient Meals",
+      "text_patient_meals": "The patient meals view displays the days of the week and the patient's meal planning, it shows every food, the grams, and alternatives for each food in case it has one.",
+      "caption_patient_charts": "Patient Charts",
+      "text_patient_charts": "The patient charts view displays different charts of their progress with the current nutritionist, some of these charts are Weight, BMI, Measurements, and others.",
+      "caption_menu": "Settings Menu",
+      "text_menu": "The settings menu is divided in Account and App settings, at the moment, it allows the user to change password, logout and change theme.",
+      "caption_change_password": "Change Password",
+      "text_change_password": "Simple dialog to change password.",
+      "caption_change_theme": "Change Theme",
+      "text_change_theme": "Simple switch to change app theme.",
+      "caption_nutritionist_home": "Nutritionist Home",
+      "text_nutritionist_home": "The nutritionist home view displays the current date, the nutritionist's current plan and profile.",
+      "caption_nutritionist_patients": "Nutritionist Patients",
+      "text_nutritionist_patients": "The nutritionist patients view displays all the nutritionist's patients, showing the most important info and allowing them to see the app as that patient.",
+      "caption_nutritionist_patient": "Nutritionist Patient",
+      "text_nutritionist_patient": "The nutritionist patient view displays the same views as a patient login, but inside the nutritionist patients view."
+    },
     "catalog": {
       "title": "Car catalog",
       "description": "This is a catalog that I made for the Roleplay server (Lua backend), it gets all the available vehicles and their data from the MySQL database, alongside, I collected data from GTABase to display additional information.",

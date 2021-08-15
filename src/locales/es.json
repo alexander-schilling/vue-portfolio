@@ -47,7 +47,7 @@
       "subtitle": "Desarrollador de Software Full-Stack",
       "description": "<i>Nutrialus, el software que automatiza la evaluación nutricional de tus pacientes y te ayuda a elaborar fácilmente un plan de alimentación personalizado.</i> Ingresé a Nutrialus por 3 meses realizando mi práctica profesional, realizando una labor de Desarrollador de Software Full-Stack, después de la práctica profesional, fui contratado para realizar la misma labor, en modalidad part-time.",
       "others": [
-        "Desarrollo de aplicación web para profesionales nutricionistas:<br />· Entorno de desarrollo: Ruby on Rails + React<br />· Base de datos relacional: PostgreSQL<br />· Bases de datos no relacionales: Elasticsearch, Redis",
+        "Desarrollo de aplicación web para profesionales nutricionistas:<br />· Entorno de desarrollo: Ruby on Rails + React<br />· Base de datos relacional: PostgreSQL<br />· Motores/Bases de datos: Elasticsearch, Redis",
         "Aplicación móvil para pacientes y profesionales nutricionistas:<br />· Entorno de desarrollo: React Native"
       ],
       "date": "abril 2021 - presente"
@@ -64,6 +64,28 @@
   },
   "portfolio": {
     "title": "Portafolio",
+    "nutrial_mobile": {
+      "title": "Aplicación móvil de Nutrialus",
+      "description": "He estado desarrollando la aplicación móvil Nutrialus en React Native desde mi práctica profesional con ellos, actualmente muestra datos para el paciente, el plan de comidas, gráficos y un menú de configuración, lo que permite un cambio de contraseña, cerrar sesión y cambiar entre tema claro y oscuro. Luego, la aplicación se actualizó para mostrar un índice de pacientes para los nutricionistas, lo que les permite ver cómo su paciente ve la aplicación.",
+      "caption_patient_home": "Inicio del Paciente",
+      "text_patient_home": "La vista de inicio del paciente muestra la fecha actual, la próxima comida, con un componente de actualización que muestra la comida con el tiempo restante. Las siguientes dos ventanas muestran la energía y los macronutrientes, finalmente su nutricionista.",
+      "caption_patient_meals": "Comidas del Paciente",
+      "text_patient_meals": "La vista de comidas del paciente muestra los días de la semana y la planificación de las comidas del paciente, muestra cada alimento, los gramos y las alternativas para cada alimento en caso de que tenga uno.",
+      "caption_patient_charts": "Gráficos del Paciente",
+      "text_patient_charts": "La vista de gráficos del paciente muestra diferentes gráficos de su progreso con el nutricionista actual, algunos de estos gráficos son Peso, IMC, Mediciones y otros.",
+      "caption_menu": "Menú de Configuración",
+      "text_menu": "El menú de configuración está dividido en configuración de Cuenta y Aplicación, por el momento, permite al usuario cambiar la contraseña, cerrar la sesión y cambiar el tema.",
+      "caption_change_password": "Cambiar Contraseña",
+      "text_change_password": "Diálogo simple para cambiar la contraseña.",
+      "caption_change_theme": "Cambiar Tema",
+      "text_change_theme": "Switch simple para cambiar el tema de la aplicación.",
+      "caption_nutritionist_home": "Inicio del Nutricionista",
+      "text_nutritionist_home": "La vista de inicio del nutricionista muestra la fecha actual, el plan actual y el perfil del nutricionista.",
+      "caption_nutritionist_patients": "Pacientes del Nutricionista",
+      "text_nutritionist_patients": "La vista de pacientes del nutricionista muestra todos los pacientes del nutricionista, mostrando la información más importante y permitiéndoles ver la aplicación como ese paciente.",
+      "caption_nutritionist_patient": "Paciente del Nutricionista",
+      "text_nutritionist_patient": "La vista de paciente del nutricionista muestra las mismas vistas que una sesión iniciada como paciente, pero dentro de la vista del índice de pacientes del nutricionista."
+    },
     "catalog": {
       "title": "Catálogo vehicular",
       "description": "Este es un catálogo que hice para el servidor Roleplay (backend en Lua), obtiene todos los vehículos disponibles y sus datos de una base de datos MySQL, además, recopilé datos de GTABase para mostrar información adicional.",
