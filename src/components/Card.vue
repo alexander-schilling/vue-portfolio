@@ -5,7 +5,6 @@
         v-if="images"
         v-model="slide"
         :interval="10000"
-        background="#ababab"
         @sliding-start="onSlideStart"
         @sliding-end="onSlideEnd"
       >
@@ -42,7 +41,7 @@
 
     <hr />
 
-    <b-card-text>
+    <b-card-text class="text-justify">
       {{ description }}
     </b-card-text>
 
@@ -63,7 +62,6 @@
               :interval="10000"
               controls
               indicators
-              background="#ababab"
               @sliding-start="onSlideStart"
               @sliding-end="onSlideEnd"
             >
@@ -72,8 +70,11 @@
                   :key="'modal-carousel-slide' + index"
                   :caption="image.caption"
                   :text="image.text"
-                  :img-src="image.src"
-                ></b-carousel-slide>
+                >
+                  <template #img>
+                    <b-img :src="image.src" fluid center></b-img>
+                  </template>
+                </b-carousel-slide>
               </template>
             </b-carousel>
 
@@ -156,15 +157,9 @@ export default {
 
 <style>
 .carousel-caption {
-  text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black,
-    1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
-  background-color: rgba(0, 0, 0, 0.33);
-  font-weight: bolder;
-  font-size: 1.2rem;
-  border-radius: 1rem;
-}
-
-.carousel-caption h3 {
-  font-weight: 600;
+  margin-top: 10px;
+  position: relative;
+  left: auto;
+  right: auto;
 }
 </style>

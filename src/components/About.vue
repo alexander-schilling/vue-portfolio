@@ -8,7 +8,7 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col>
+      <b-col class="text-justify">
         <p>{{ $t("about.description") }}</p>
         <p v-html="$t('about.currently')"></p>
         <p v-html="$t('about.status')"></p>
