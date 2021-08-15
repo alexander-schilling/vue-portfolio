@@ -11,10 +11,12 @@
 
     <b-row
       class="mb-3 pb-3 d-flex flex-row flex-nowrap overflow-auto"
-      style="overflow: -moz-scrollbars-vertical; overflow-y: scroll"
+      style="overflow: -moz-scrollbars-vertical; overflow-x: scroll"
     >
       <workplace
         v-for="(item, index) in workplaces"
+        :first="index === 0"
+        :last="index === workplaces.length - 1"
         :key="`workplace_${index}`"
         :title="item.title"
         :subtitle="item.subtitle"

@@ -1,5 +1,8 @@
 <template>
-  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
+  <div
+    class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3"
+    v-bind:class="{ 'ml-auto': first, 'mr-auto': last }"
+  >
     <b-card
       :img-src="imgSrc"
       img-alt="Image"
@@ -46,6 +49,12 @@
 export default {
   name: "Workplace",
   props: {
+    first: {
+      type: Boolean,
+    },
+    last: {
+      type: Boolean,
+    },
     title: {
       type: String,
       default: "Workplace",
