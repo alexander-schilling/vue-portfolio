@@ -40,6 +40,12 @@ export default {
     cards() {
       return [
         {
+          title: this.$i18n.t("portfolio.admin_menu.title"),
+          description: this.$i18n.t("portfolio.admin_menu.description"),
+          embed: "https://www.youtube.com/embed/mzqjA5V8IUU",
+          nomodal: true,
+        },
+        {
           title: this.$i18n.t("portfolio.nutrial_mobile.title"),
           description: this.$i18n.t("portfolio.nutrial_mobile.description"),
           images: [

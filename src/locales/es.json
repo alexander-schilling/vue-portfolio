@@ -143,6 +143,10 @@
     "cp2077instagram": {
       "title": "Publicidad de Instagram",
       "description": "Para los videos anteriores, hice algunas animaciones para Instagram."
+    },
+    "admin_menu": {
+      "title": "Menú de Administración",
+      "description": "Este menú está desarrollado para Hispano Roleplay, permite a los jugadores administrar los miembros y activos de su facción, mostrando detalles sobre cada sección. Está desarrollado en React con Chakra UI y Lua backend. "
     }
   }
 }
