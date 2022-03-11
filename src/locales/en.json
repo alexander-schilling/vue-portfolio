@@ -27,7 +27,7 @@
   },
   "about": {
     "title": "About me",
-    "description": "My name is Alexander, I'm 23 years old and I live in Santiago, Chile.",
+    "description": "My name is Alexander, I'm 24 years old and I live in Santiago, Chile.",
     "currently": "I'm an Analyst Programmer and Informatics Engineering student. As a hobby, I've created and modified <a href=\"https://fivem.net/\">FiveM</a> resources for a Roleplay server in which I've been the lead developer since March 2019, working in Lua, HTML, Javascript, CSS, C# and MySQL databases. You can visit the <a href=\"https://discord.gg/hispano\">discord server</a> or the <a href=\"https://www.comunidad-hispano.com/\">website</a>. Throughout these years I've been a participant in different video game server communities, as a moderator, administrator and/or programmer, such as <a href=\"https://www.sa-mp.com/\">GTA:SAMP</a> (Pawno Scripting), Minecraft (Java) and Rust <a href=\"https://umod.org/\">Oxidemod</a> (C#); along with this, I've worked with MySQL, SQLite, H2, and other databases, and managed servers with Linux, which most of these servers use.<br>Also, I like image editing and video creation and editing.<br>It's worth to mention that a lot of my projects I haven't uploaded them to Github or they were lost before I knew that this tool even existed. If I find them, I will upload them here or coding projects to Github.",
     "status": "I'm currently working as a part-time <b>Full-Stack Software Developer</b> at <a href=\"https://nutrial.us/\">Nutrialus</a>"
   },
