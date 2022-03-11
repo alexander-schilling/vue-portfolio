@@ -42,6 +42,16 @@
   },
   "work": {
     "title": "Experiencia Laboral",
+    "ecmat": {
+      "title": "eCmat",
+      "subtitle": "Frontend Developer",
+      "description": "<i>Ciencia de datos aplicada a la cadena de suministro de la construcción.</i> He trabajado para eCmat como desarrollador frontend, realizando mejoras en su página privada y web scraping.",
+      "others": [
+        "Desarrollo frontend:<br />· Entorno de desarrollo: Angular + Django<br />· Base de datos NoSQL: MongoDB",
+        "Web scraping:<br />· Entorno de desarrollo: Selenium Python + Scrapy"
+      ],
+      "date": "octubre 2021 - febrero 2022"
+    },
     "nutrialus": {
       "title": "Nutrialus",
       "subtitle": "Desarrollador de Software Full-Stack",

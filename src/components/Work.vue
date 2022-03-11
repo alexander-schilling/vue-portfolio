@@ -42,6 +42,16 @@ export default {
     workplaces() {
       return [
         {
+          title: this.$i18n.t("work.ecmat.title"),
+          subtitle: this.$i18n.t("work.ecmat.subtitle"),
+          description: this.$i18n.t("work.ecmat.description"),
+          imgSrc: require("@/assets/img/work/ecmat.png"),
+          listOthers: this.$i18n.t("work.ecmat.others"),
+          date: this.$i18n.t("work.ecmat.date"),
+          website: "https://ecmat.cl/",
+          linkedin: "https://www.linkedin.com/company/ecmatchile/",
+        },
+        {
           title: this.$i18n.t("work.nutrialus.title"),
           subtitle: this.$i18n.t("work.nutrialus.subtitle"),
           description: this.$i18n.t("work.nutrialus.description"),

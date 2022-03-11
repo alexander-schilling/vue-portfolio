@@ -42,6 +42,16 @@
   },
   "work": {
     "title": "Work Experience",
+    "ecmat": {
+      "title": "eCmat",
+      "subtitle": "Frontend Developer",
+      "description": "<i>Data science applied to the construction supply chain.</i> I've worked for eCmat as a frontend developer, doing improvements in their private page and web scraping.",
+      "others": [
+        "Frontend development:<br />· Development environment: Angular + Django",
+        "Web scraping:<br />· Development environment: Selenium Python + Scrapy"
+      ],
+      "date": "october 2021 - february 2022"
+    },
     "nutrialus": {
       "title": "Nutrialus",
       "subtitle": "Full-Stack Software Developer",
