@@ -42,20 +42,23 @@ export default {
       programming: [
         { skill: "Lua", level: 5 },
         { skill: "Java", level: 4 },
-        { skill: "HTML/JS/CSS", level: 4 },
+        { skill: "HTML/JS/TS/CSS", level: 4 },
         { skill: "Python", level: 3 },
         { skill: "C#", level: 3 },
+        { skill: "Ruby on Rails", level: 2 },
       ],
       frameworks: [
         { skill: "React", level: 4 },
         { skill: "React Native", level: 4 },
         { skill: "Vue.js", level: 3 },
+        { skill: "Angular", level: 2 },
       ],
       misc: [
         { skill: "Windows", level: 5 },
         { skill: "MySQL", level: 4 },
         { skill: "Linux", level: 3 },
         { skill: "Oracle", level: 2 },
+        { skill: "MongoDB", level: 2 },
         { skill: "Unity 3D", level: 2 },
       ],
       other: [
@@ -63,6 +66,7 @@ export default {
         { skill: "Adobe Photoshop", level: 4 },
         { skill: "Adobe Premiere Pro", level: 3 },
         { skill: "Adobe After Effects", level: 3 },
+        { skill: "Blender", level: 2 },
         { skill: "Adobe Illustrator", level: 1 },
       ],
     };
