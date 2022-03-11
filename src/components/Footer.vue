@@ -4,7 +4,7 @@
       <span id="footer-span">
         Alexander Schilling
         <font-awesome-icon icon="copyright" />
-        2021
+        {{ new Date().getFullYear() }}
       </span>
     </b-nav-text>
   </b-navbar>
