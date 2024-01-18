@@ -101,7 +101,7 @@ export default {
   methods: {
     consoleInputEffect() {
       setTimeout(() => {
-        this.inputOpacity == 255
+        this.inputOpacity === 255
           ? (this.inputOpacity = 0)
           : (this.inputOpacity = 255);
         this.consoleInputEffect();
@@ -124,7 +124,7 @@ export default {
 
 <style lang="scss">
 #navBar {
-  font-family: Consolas;
+  font-family: Consolas, sans-serif;
 }
 
 #navBar img {
