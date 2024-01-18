@@ -28,11 +28,11 @@
           {{ $t("navbar.about") }}
         </b-nav-item>
 
-        <b-nav-item class="text-center" :href="resume">
+        <!--b-nav-item class="text-center" :href="resume">
           <font-awesome-icon icon="user-tie" size="lg" />
           <br />
           {{ $t("navbar.resume") }}
-        </b-nav-item>
+        </b-nav-item-->
 
         <b-nav-item
           class="text-center"
@@ -69,12 +69,12 @@
           </template>
           <b-dropdown-item
             @click="$store.dispatch('setLocale', { locale: 'en', i18n: $i18n })"
-            >English</b-dropdown-item
-          >
+            >English
+          </b-dropdown-item>
           <b-dropdown-item
             @click="$store.dispatch('setLocale', { locale: 'es', i18n: $i18n })"
-            >Español</b-dropdown-item
-          >
+            >Español
+          </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>

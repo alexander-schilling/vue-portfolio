@@ -42,6 +42,26 @@ export default {
     workplaces() {
       return [
         {
+          title: this.$i18n.t("work.cat.title"),
+          subtitle: this.$i18n.t("work.cat.subtitle"),
+          description: this.$i18n.t("work.cat.description"),
+          imgSrc: require("@/assets/img/work/cat.png"),
+          listOthers: this.$i18n.t("work.cat.others"),
+          date: this.$i18n.t("work.cat.date"),
+          website: "https://www.tarjetacencosud.cl/publico/home",
+          linkedin: "https://www.linkedin.com/company/cencosud-scotiabank/",
+        },
+        {
+          title: this.$i18n.t("work.acl.title"),
+          subtitle: this.$i18n.t("work.acl.subtitle"),
+          description: this.$i18n.t("work.acl.description"),
+          imgSrc: require("@/assets/img/work/acl.png"),
+          listOthers: this.$i18n.t("work.acl.others"),
+          date: this.$i18n.t("work.acl.date"),
+          website: "https://www.aclti.com/es/",
+          linkedin: "https://www.linkedin.com/company/acltecnologia/",
+        },
+        {
           title: this.$i18n.t("work.ecmat.title"),
           subtitle: this.$i18n.t("work.ecmat.subtitle"),
           description: this.$i18n.t("work.ecmat.description"),

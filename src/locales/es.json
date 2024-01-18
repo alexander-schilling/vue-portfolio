@@ -27,9 +27,9 @@
   },
   "about": {
     "title": "Acerca de mí",
-    "description": "Mi nombre es Alexander, tengo 24 años y soy de Santiago, Chile.",
-    "currently": "Soy Analista Programador y estudiante de Ingeniería en Informática. Como hobby, he creado y modificado recursos de <a href=\"https://fivem.net/\">FiveM</a> para un servidor de Roleplay, el cual he sido el desarrollador principal desde marzo del 2019, trabajando en Lua, HTML, Javascript, CSS, C# y bases de datos MySQL. Puedes visitar el <a href=\"https://discord.gg/hispano\">servidor de discord</a> o el <a href=\"https://www.comunidad-hispano.com/\">sitio web</a>. A lo largo de estos años he sido partícipe en distintas comunidades de servidores de videojuegos, como moderador, administrador y/o programador, tales como <a href=\"https://www.sa-mp.com/\">GTA:SAMP</a> (Pawno Scripting), Minecraft (Java) y Rust <a href=\"https://umod.org/\">Oxidemod</a> (C#); en conjunto a esto, he trabajado con bases de datos MySQL, SQLite, H2, etc. y administrado servidores con el sistema operativo Linux, el cual la mayoría de estos servidores usan.<br>También, me gusta la edición de imágenes y la creación y edición de videos.<br>Cabe mencionar que varios proyectos no los he subido a Github o se perdieron antes de que supiera de la existencia de esta herramienta. Si los encuentro, los subiré acá o los proyectos de código a Github.",
-    "status": "Actualmente estoy trabajando como <b>Desarrollador de Software Full-Stack</b> part-time en <a href=\"https://nutrial.us\">Nutrialus</a>."
+    "description": "Mi nombre es Alexander, tengo 26 años y soy de Santiago, Chile.",
+    "currently": "Ingeniero en Informática, geek, aficionado de los videojuegos, del aprendizaje autónomo y el diseño gráfico. Como hobby, he creado y modificado recursos de FiveM para un servidor de Roleplay, el cual he sido el desarrollador principal desde marzo del 2019, trabajando en Lua, HTML, Javascript, CSS, C# y bases de datos MySQL. A lo largo de estos años he sido partícipe en distintas comunidades de servidores de videojuegos, como moderador, administrador y/o programador, tales como GTA:SAMP (Pawno Scripting), Minecraft (Java) y Rust Oxidemod (C#); en conjunto a esto, he trabajado con bases de datos MySQL, SQLite, H2, etc. y administrado servidores con el sistema operativo Linux, el cual la mayoría de estos servidores usan.",
+    "status": "Actualmente estoy trabajando como <b>Ingeniero de Datos</b> en <a href=\"https://www.linkedin.com/company/cencosud-scotiabank/\">Cencosud Scotiabank (CAT)</a>."
   },
   "skills": {
     "title": "Habilidades",
@@ -42,6 +42,27 @@
   },
   "work": {
     "title": "Experiencia Laboral",
+    "cat": {
+      "title": "Cencosud Scotiabank (CAT)",
+      "subtitle": "Ingeniero de Datos & Desarrollador de Microservicios",
+      "description": "<i>Cencosud Administradora de Tarjetas.</i> Ingresé como desarrollador semi-senior de microservicios, luego tomé el desafío y oportunidad de trabajar como ingeniero de datos con enfoque en Azure.",
+      "others": [
+        "Ingeniería de datos: ETLs, Azure Databricks, Apache Spark SQL (PySpark), Python, Azure Data Factory",
+        "Desarrollo de microservicios: Java Spring Boot, arquitectura hexagonal, tests unitarios, API REST y SOAP, Kafka, Kubernetes, Docker, Rancher, Scrum, Jira, Confluence y Bitbucket"
+      ],
+      "date": "diciembre 2022 - actualidad"
+    },
+    "acl": {
+      "title": "ACL",
+      "subtitle": "Desarrollador externo",
+      "description": "<i>Servicios y consultoría de TI.</i> Parte del Programa Profesionales Jóvenes realizando mi segunda práctica profesional y posterior trabajador externo proveyendo servicios a Cencosud Administradora de Tarjetas (CAT).",
+      "others": [
+        "Stack: MongoDB, Express.js, React, Node.js (MERN) y Java Spring Boot",
+        "Desarrollo de habilidades blandas, manejo de conflictos y competencias laborales",
+        "Presentaciones semanales a equipo de trabajo sobre proyectos y aprendizaje de herramientas y contenidos de desarrollo de software"
+      ],
+      "date": "abril 2023 - actualidad"
+    },
     "ecmat": {
       "title": "eCmat",
       "subtitle": "Frontend Developer",
@@ -60,7 +81,7 @@
         "Desarrollo de aplicación web para profesionales nutricionistas:<br />· Entorno de desarrollo: Ruby on Rails + React<br />· Base de datos relacional: PostgreSQL<br />· Motores/Bases de datos: Elasticsearch, Redis",
         "Aplicación móvil para pacientes y profesionales nutricionistas:<br />· Entorno de desarrollo: React Native"
       ],
-      "date": "abril 2021 - presente"
+      "date": "abril 2021 - septiembre 2022"
     },
     "hispano": {
       "title": "Comunidad Hispano",
@@ -69,7 +90,7 @@
       "others": [
         "Desarrollo de servidor de FiveM Roleplay:<br />· Entorno de desarrollo: Lua, JavaScript, C#, HTML, CSS, Vue.js<br />· Bases de datos relacional: MySQL"
       ],
-      "date": "marzo 2019 - presente"
+      "date": "marzo 2019 - actualidad"
     }
   },
   "portfolio": {

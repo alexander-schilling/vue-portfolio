@@ -27,9 +27,9 @@
   },
   "about": {
     "title": "About me",
-    "description": "My name is Alexander, I'm 24 years old and I live in Santiago, Chile.",
-    "currently": "I'm an Analyst Programmer and Informatics Engineering student. As a hobby, I've created and modified <a href=\"https://fivem.net/\">FiveM</a> resources for a Roleplay server in which I've been the lead developer since March 2019, working in Lua, HTML, Javascript, CSS, C# and MySQL databases. You can visit the <a href=\"https://discord.gg/hispano\">discord server</a> or the <a href=\"https://www.comunidad-hispano.com/\">website</a>. Throughout these years I've been a participant in different video game server communities, as a moderator, administrator and/or programmer, such as <a href=\"https://www.sa-mp.com/\">GTA:SAMP</a> (Pawno Scripting), Minecraft (Java) and Rust <a href=\"https://umod.org/\">Oxidemod</a> (C#); along with this, I've worked with MySQL, SQLite, H2, and other databases, and managed servers with Linux, which most of these servers use.<br>Also, I like image editing and video creation and editing.<br>It's worth to mention that a lot of my projects I haven't uploaded them to Github or they were lost before I knew that this tool even existed. If I find them, I will upload them here or coding projects to Github.",
-    "status": "I'm currently working as a part-time <b>Full-Stack Software Developer</b> at <a href=\"https://nutrial.us/\">Nutrialus</a>"
+    "description": "My name is Alexander, I am 26 years old and I am from Santiago, Chile.",
+    "currently": "Informatics Engineer, geek, video game enthusiast, fan of autonomous learning and graphic design. As a hobby, I have created and modified resources for FiveM for a Roleplay server, which I have been the lead developer of since March 2019, working in Lua, HTML, Javascript, CSS, C# and MySQL databases. Over these years, I have been involved in various video game server communities, as a moderator, administrator and/or programmer, such as GTA:SAMP (Pawno Scripting), Minecraft (Java) and Rust Oxidemod (C#); in addition to this, I have worked with MySQL, SQLite, H2, etc. databases and managed servers with the Linux operating system, which most of these servers use.",
+    "status": "I am currently working as a <b>Data Engineer</b> at <a href=\"https://www.linkedin.com/company/cencosud-scotiabank/\">Cencosud Scotiabank (CAT)</a>."
   },
   "skills": {
     "title": "Skills",
@@ -42,6 +42,27 @@
   },
   "work": {
     "title": "Work Experience",
+    "cat": {
+      "title": "Cencosud Scotiabank (CAT)",
+      "subtitle": "Data Engineer & Microservices Developer",
+      "description": "<i>Cencosud Administradora de Tarjetas.</i> I joined as a semi-senior microservices developer, then took on the challenge and opportunity to work as a data engineer with a focus on Azure.",
+      "others": [
+        "Data Engineering: ETLs, Azure Databricks, Apache Spark SQL (PySpark), Python, Azure Data Factory",
+        "Microservices Development: Java Spring Boot, hexagonal architecture, unit tests, REST and SOAP APIs, Kafka, Kubernetes, Docker, Rancher, Scrum, Jira, Confluence, and Bitbucket"
+      ],
+      "date": "December 2022 - present"
+    },
+    "acl": {
+      "title": "ACL",
+      "subtitle": "External Developer",
+      "description": "<i>IT services and consulting.</i> Part of the Young Professionals Program, completing my second professional internship and later working as an external worker providing services to Cencosud Card Administration (CAT).",
+      "others": [
+        "Stack: MongoDB, Express.js, React, Node.js (MERN) and Java Spring Boot",
+        "Development of soft skills, conflict management and work competencies",
+        "Weekly presentations to the work team about projects and learning of tools and software development content"
+      ],
+      "date": "April 2023 - present"
+    },
     "ecmat": {
       "title": "eCmat",
       "subtitle": "Frontend Developer",
@@ -50,7 +71,7 @@
         "Frontend development:<br />· Development environment: Angular + Django",
         "Web scraping:<br />· Development environment: Selenium Python + Scrapy"
       ],
-      "date": "october 2021 - february 2022"
+      "date": "October 2021 - February 2022"
     },
     "nutrialus": {
       "title": "Nutrialus",
@@ -60,7 +81,7 @@
         "Development of a Web application for professional nutritionists:<br />· Development environment: Ruby on Rails + React<br />· Relational database: PostgreSQL<br />· Engines/Databases: Elasticsearch, Redis",
         "Mobile application for professional nutritionists and their patients:<br />· Development environment: React Native"
       ],
-      "date": "april 2021 - present"
+      "date": "April 2021 - September 2022"
     },
     "hispano": {
       "title": "Hispano Community",
@@ -69,7 +90,7 @@
       "others": [
         "FiveM Roleplay server development:<br />· Development environment: Lua, JavaScript, C #, HTML, CSS, Vue.js<br />· Relational databases: MySQL"
       ],
-      "date": "march 2019 - present"
+      "date": "March 2019 - present"
     }
   },
   "portfolio": {
