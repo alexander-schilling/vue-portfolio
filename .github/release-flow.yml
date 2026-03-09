@@ -1,0 +1,274 @@
+name: Release Flow (PR -> RC only if PR open -> Tag/Release/Notify)
+
+on:
+  push:
+    branches:
+      - 'release/*'
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  DEFAULT_BASE: main
+  RELEASE_BRANCH_REGEX: '^release\/[0-9]+\.[0-9]+\.[0-9]+$'
+
+jobs:
+  open_release_pr:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (shallow)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          ref: ${{ github.ref }}
+
+      - name: Extraer versión desde la rama
+        id: version
+        run: |
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          if [[ "$BRANCH" =~ ${{ env.RELEASE_BRANCH_REGEX }} ]]; then
+            VERSION="${BRANCH#release/}"
+            echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          else
+            echo "Rama no cumple patrón release/x.y.z"; exit 1
+          fi
+
+      - name: Verificar si ya existe PR abierto
+        id: check_pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = process.env.GITHUB_REF.replace('refs/heads/','');
+            const base   = process.env.DEFAULT_BASE;
+            const { data } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: `${context.repo.owner}:${branch}`,
+              base
+            });
+            core.setOutput('exists', data.length > 0 ? 'true' : 'false');
+
+      - name: Crear Pull Request a main
+        if: steps.check_pr.outputs.exists == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = process.env.GITHUB_REF.replace('refs/heads/','');
+            const base = process.env.DEFAULT_BASE;
+            const v = `${{ steps.version.outputs.version }}`;
+            await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:${branch}`,
+              base,
+              title: `[Release] v${v}`,
+              body: `Este PR prepara el release **v${v}**.\n\n- Rama: \`${branch}\`\n- Base: \`${base}\``
+            });
+
+  prerelease_rc:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full, sin credenciales por defecto)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          persist-credentials: false
+
+      - name: Configurar remote con PAT (para fetch/push y gh)
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git"
+          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "https://github.com/"
+          echo "GH_TOKEN=${GH_PAT}" >> "$GITHUB_ENV"   
+
+      - name: Extraer versión base (X.Y.Z)
+        id: ver
+        run: |
+          BR="${GITHUB_REF#refs/heads/}"
+          [[ "$BR" =~ ^release\/[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Rama no cumple patrón"; exit 1; }
+          BASE="${BR#release/}"
+          echo "BASE_VERSION=$BASE" >> "$GITHUB_ENV"
+          echo "BRANCH=$BR" >> "$GITHUB_ENV"
+
+      - name: Confirmar PR abierto
+        id: pr_open
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const base = 'main';
+            const head = process.env.BRANCH;
+            const { data } = await github.rest.pulls.list({
+              owner: context.repo.owner, repo: context.repo.repo,
+              state: 'open', head: `${context.repo.owner}:${head}`, base
+            });
+            core.setOutput('open', data.length > 0 ? 'true' : 'false');
+
+      - name: Saltar si no hay PR abierto
+        if: steps.pr_open.outputs.open != 'true'
+        run: |
+          echo "No hay PR abierto desde ${BRANCH} → no se crea RC."
+          exit 0
+
+      - name: Evitar RC duplicado para este commit (requiere auth)
+        id: dupe
+        run: |
+          git fetch --tags
+          if git tag --points-at "${GITHUB_SHA}" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9]+$' >/dev/null; then
+            echo "already=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "already=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Calcular próximo RC (N)
+        if: steps.dupe.outputs.already == 'false'
+        id: rcnum
+        run: |
+          last=$(git tag -l "v${BASE_VERSION}-rc.*" | sed -E 's/^v[0-9]+\.[0-9]+\.[0-9]+-rc\.([0-9]+)$/\1/' | sort -V | tail -n1)
+          NEXT=$(( ${last:-0} + 1 ))
+          echo "NEXT_RC=$NEXT" >> "$GITHUB_ENV"
+          echo "tag=v${BASE_VERSION}-rc.${NEXT}" >> "$GITHUB_OUTPUT"
+
+      - name: Crear tag RC (local)
+        if: steps.dupe.outputs.already == 'false'
+        run: |
+          TAG="${{ steps.rcnum.outputs.tag }}"
+          git tag "$TAG" "${GITHUB_SHA}"
+
+      - name: Push tag RC con PAT (dispara build)
+        if: steps.dupe.outputs.already == 'false'
+        run: |
+          git push origin "${{ steps.rcnum.outputs.tag }}"
+
+      - name: Crear Pre-release en GitHub (usa GH_TOKEN del PAT)
+        if: steps.dupe.outputs.already == 'false'
+        run: |
+          TAG="${{ steps.rcnum.outputs.tag }}"
+          gh release create "$TAG" \
+            --title "Release Candidate $TAG" \
+            --notes "Pre-release candidate para v${BASE_VERSION} (commit $GITHUB_SHA)." \
+            --prerelease
+
+  finalize_release:
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.base.ref == 'main' &&
+      startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout completo (sin credenciales por defecto)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Configurar remote con PAT (para fetch/push y gh)
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git"
+          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "https://github.com/"
+          echo "GH_TOKEN=${GH_PAT}" >> "$GITHUB_ENV"
+
+      - name: Extraer versión final
+        id: version
+        run: |
+          BRANCH="${{ github.event.pull_request.head.ref }}"
+          if [[ "$BRANCH" =~ ^release\/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            VERSION="${BRANCH#release/}"
+            echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          else
+            echo "Rama no cumple patrón release/x.y.z"; exit 1
+          fi
+
+      - name: Config Git (autor)
+        run: |
+          git config --global user.name  'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Crear tag final (local) o detectar existente
+        id: tag
+        run: |
+          git fetch --tags
+          if git rev-parse "v${VERSION}" >/dev/null 2>&1; then
+            echo "tag_exists=true" >> $GITHUB_OUTPUT
+          else
+            git tag "v${VERSION}" "${{ github.event.pull_request.merge_commit_sha }}"
+            echo "tag_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Push tag estable con PAT (dispara build)
+        if: steps.tag.outputs.tag_exists == 'false'
+        run: |
+          git push origin "v${VERSION}"
+
+      - name: Crear Release final (autonotas) con gh
+        run: |
+          gh release create "v${VERSION}" \
+            --title "Release v${VERSION}" \
+            --generate-notes || echo "Release ya existe, ok"
+
+      - name: Comentar en el PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const version = process.env.VERSION
+            const repo = `${context.repo.owner}/${context.repo.repo}`;
+            const url  = `https://github.com/${repo}/releases/tag/v${version}`;
+            const body = [
+              `### Hispano Release – **${repo}**`,
+              `Se creó el release **v${version}**.`,
+              `- **Notas**: ${url}`,
+              `- **Merge commit**: \`${context.payload.pull_request.merge_commit_sha}\``
+            ].join('\n');
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body
+            });
+
+      - name: Notificar a Discord
+        if: always()
+        run: |
+          VERSION="${{ env.VERSION }}"
+          REPO="${{ github.repository }}"
+          PR_URL="${{ github.event.pull_request.html_url }}"
+          RELEASE_URL="https://github.com/${REPO}/releases/tag/v${VERSION}"
+          payload=$(jq -n \
+            --arg repo "$REPO" \
+            --arg v "$VERSION" \
+            --arg pr "$PR_URL" \
+            --arg rel "$RELEASE_URL" \
+            '{
+              username: "Hispano Release Bot",
+              content: "### Hispano Release - [\($repo)](https://github.com/\($repo))\n- **Version**: v\($v)\n- **PR**: \($pr)\n- **Release**: \($rel)\n:rocket: Publicado"
+            }')
+          curl -sS -H "Content-Type: application/json" -d "$payload" "${{ secrets.DISCORD_WEBHOOK_URL }}"
+        env:
+          TZ: America/Santiago
+
+      - name: Borrar rama release/*
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = context.payload.pull_request.head.ref;
+            try {
+              await github.rest.git.deleteRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `heads/${branch}`
+              });
+            } catch (e) {
+              core.warning(`No se pudo borrar la rama ${branch}: ${e.message}`);
+            }
