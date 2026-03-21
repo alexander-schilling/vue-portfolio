@@ -3,6 +3,9 @@ name: Backport main -> develop
 on:
   push:
     branches: [main]
+  pull_request:
+    types: [closed]
+    branches: [develop]
 
 permissions:
   contents: write
@@ -56,6 +59,12 @@ jobs:
           git merge --no-ff --no-edit origin/main
           MERGE_RC=$?
           set -e
+
+          if [ "$MERGE_RC" -ne 0 ]; then
+            echo "Merge conflict detected while backporting main -> develop. Aborting backport branch $BR."
+            git merge --abort || true
+            exit "$MERGE_RC"
+          fi
 
           git push -u origin "$BR"
 
