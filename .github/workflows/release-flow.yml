@@ -92,6 +92,10 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
+          if [ -z "${GH_PAT}" ]; then
+            echo "Error: secrets.GH_PAT is not set or is empty. Configure GH_PAT or update this workflow to use GITHUB_TOKEN (note: GITHUB_TOKEN will not trigger downstream workflows)." >&2
+            exit 1
+          fi
           AUTH_B64="$(printf 'x-access-token:%s' "${GH_PAT}" | base64)"
           git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic ${AUTH_B64}"
           echo "GH_TOKEN=${GH_PAT}" >> "$GITHUB_ENV"
