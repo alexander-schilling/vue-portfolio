@@ -153,7 +153,7 @@ jobs:
             --data "{\"json\":{\"applicationId\":\"$APP_ID\"}}"
 
       - name: Deploy to Dokploy (PROD - from release tag)
-        if: steps.backport_guard.outputs.skip != 'true' && startsWith(github.ref, 'refs/tags/v') && !contains(github.ref_name, '-beta')
+        if: steps.backport_guard.outputs.skip != 'true' && startsWith(github.ref, 'refs/tags/v') && !contains(github.ref_name, '-beta') && !contains(github.ref_name, '-rc')
         env:
           BASE_URL: ${{ secrets.DOKPLOY_URL }}
           API_KEY:  ${{ secrets.DOKPLOY_API_KEY }}
