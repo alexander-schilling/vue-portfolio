@@ -73,6 +73,7 @@ jobs:
 
   prerelease_rc:
     if: github.event_name == 'push'
+    needs: open_release_pr
     runs-on: ubuntu-latest
     steps:
       - name: Checkout (full, sin credenciales por defecto)
@@ -82,13 +83,13 @@ jobs:
           ref: ${{ github.ref }}
           persist-credentials: false
 
-      - name: Configurar remote con PAT (para fetch/push y gh)
+      - name: Configurar autenticación para fetch/push y gh (sin token en la URL)
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git"
-          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "https://github.com/"
-          echo "GH_TOKEN=${GH_PAT}" >> "$GITHUB_ENV"   
+          AUTH_B64="$(printf 'x-access-token:%s' "${GH_PAT}" | base64)"
+          git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic ${AUTH_B64}"
+          echo "GH_TOKEN=${GH_PAT}" >> "$GITHUB_ENV"
 
       - name: Extraer versión base (X.Y.Z)
         id: ver
@@ -172,12 +173,12 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Configurar remote con PAT (para fetch/push y gh)
+      - name: Configurar autenticación para fetch/push y gh (sin token en la URL)
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${{ github.repository }}.git"
-          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "https://github.com/"
+          AUTH_B64="$(printf 'x-access-token:%s' "${GH_PAT}" | base64)"
+          git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic ${AUTH_B64}"
           echo "GH_TOKEN=${GH_PAT}" >> "$GITHUB_ENV"
 
       - name: Extraer versión final
@@ -214,9 +215,16 @@ jobs:
 
       - name: Crear Release final (autonotas) con gh
         run: |
-          gh release create "v${VERSION}" \
-            --title "Release v${VERSION}" \
-            --generate-notes || echo "Release ya existe, ok"
+          if gh release view "v${VERSION}" >/dev/null 2>&1; then
+            echo "Release ya existe, ok"
+          else
+            if ! gh release create "v${VERSION}" \
+              --title "Release v${VERSION}" \
+              --generate-notes; then
+              echo "Error creando release v${VERSION}" >&2
+              exit 1
+            fi
+          fi
 
       - name: Comentar en el PR
         uses: actions/github-script@v7
