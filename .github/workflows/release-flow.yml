@@ -299,7 +299,14 @@ jobs:
               username: "Hispano Release Bot",
               content: "### Hispano Release - [\($repo)](https://github.com/\($repo))\n- **Version**: v\($v)\n- **PR**: \($pr)\n- **Release**: \($rel)\n:rocket: Publicado"
             }')
-          curl -sS -H "Content-Type: application/json" -d "$payload" "${{ secrets.DISCORD_WEBHOOK_URL }}"
+          http_code=$(curl -sS -o /dev/null -w "%{http_code}" \
+            -H "Content-Type: application/json" \
+            -d "$payload" \
+            "${{ secrets.DISCORD_WEBHOOK_URL }}")
+          if [ "$http_code" -lt 200 ] || [ "$http_code" -ge 300 ]; then
+            echo "Error enviando notificación a Discord. Código HTTP: $http_code" >&2
+            exit 1
+          fi
         env:
           TZ: America/Santiago
 
