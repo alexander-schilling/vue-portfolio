@@ -90,7 +90,7 @@ jobs:
             echo "Error: secrets.GH_PAT is not set or is empty. Configure GH_PAT or update this workflow to use GITHUB_TOKEN (note: GITHUB_TOKEN will not trigger downstream workflows)." >&2
             exit 1
           fi
-          AUTH_B64="$(printf 'x-access-token:%s' "${GH_PAT}" | base64)"
+          AUTH_B64="$(printf 'x-access-token:%s' "${GH_PAT}" | base64 | tr -d '\n')"
           git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic ${AUTH_B64}"
           echo "GH_TOKEN=${GH_PAT}" >> "$GITHUB_ENV"
 
@@ -108,7 +108,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const base = 'main';
+            const base = process.env.DEFAULT_BASE || 'main';
             const head = process.env.BRANCH;
             const { data } = await github.rest.pulls.list({
               owner: context.repo.owner, repo: context.repo.repo,
@@ -184,7 +184,7 @@ jobs:
             echo "Error: secrets.GH_PAT is not configured. This release flow requires a personal access token to push tags and create releases."
             exit 1
           fi
-          AUTH_B64="$(printf 'x-access-token:%s' "${GH_PAT}" | base64)"
+          AUTH_B64="$(printf 'x-access-token:%s' "${GH_PAT}" | base64 | tr -d '\n')"
           git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic ${AUTH_B64}"
           echo "GH_TOKEN=${GH_PAT}" >> "$GITHUB_ENV"
 
@@ -279,7 +279,14 @@ jobs:
 
       - name: Notificar a Discord
         if: always()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TZ: America/Santiago
         run: |
+          if [ -z "${DISCORD_WEBHOOK_URL}" ]; then
+            echo "DISCORD_WEBHOOK_URL no está configurado, omitiendo notificación."
+            exit 0
+          fi
           VERSION="${{ env.VERSION }}"
           REPO="${{ github.repository }}"
           PR_URL="${{ github.event.pull_request.html_url }}"
@@ -296,13 +303,11 @@ jobs:
           http_code=$(curl -sS -o /dev/null -w "%{http_code}" \
             -H "Content-Type: application/json" \
             -d "$payload" \
-            "${{ secrets.DISCORD_WEBHOOK_URL }}")
+            "${DISCORD_WEBHOOK_URL}")
           if [ "$http_code" -lt 200 ] || [ "$http_code" -ge 300 ]; then
             echo "Error enviando notificación a Discord. Código HTTP: $http_code" >&2
             exit 1
           fi
-        env:
-          TZ: America/Santiago
 
       - name: Borrar rama release/*
         uses: actions/github-script@v7
