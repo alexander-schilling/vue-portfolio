@@ -12,6 +12,10 @@ permissions:
   pull-requests: write
   issues: write
 
+concurrency:
+  group: ${{ github.workflow }}-backport-to-develop
+  cancel-in-progress: false
+
 jobs:
   backport:
     if: github.event_name == 'push'
