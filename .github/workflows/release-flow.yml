@@ -116,14 +116,9 @@ jobs:
             });
             core.setOutput('open', data.length > 0 ? 'true' : 'false');
 
-      - name: Saltar si no hay PR abierto
-        if: steps.pr_open.outputs.open != 'true'
-        run: |
-          echo "No hay PR abierto desde ${BRANCH} → no se crea RC."
-          exit 0
-
       - name: Evitar RC duplicado para este commit (requiere auth)
         id: dupe
+        if: steps.pr_open.outputs.open == 'true'
         run: |
           git fetch --tags
           if git tag --points-at "${GITHUB_SHA}" | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9]+$' >/dev/null; then
@@ -278,7 +273,7 @@ jobs:
             });
 
       - name: Notificar a Discord
-        if: always()
+        if: success()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           TZ: America/Santiago
