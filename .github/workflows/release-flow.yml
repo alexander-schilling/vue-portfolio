@@ -227,8 +227,8 @@ jobs:
             fi
           fi
 
-          if git rev-parse "v${VERSION}" >/dev/null 2>&1; then
-            EXISTING_SHA="$(git rev-parse "v${VERSION}")"
+          if git rev-parse "refs/tags/v${VERSION}" >/dev/null 2>&1; then
+            EXISTING_SHA="$(git rev-parse "v${VERSION}^{commit}")"
             if [ "$EXISTING_SHA" != "$MERGE_SHA" ]; then
               echo "El tag v${VERSION} ya existe pero apunta a $EXISTING_SHA en lugar de $MERGE_SHA" >&2
               exit 1
