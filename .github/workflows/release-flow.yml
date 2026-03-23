@@ -6,6 +6,8 @@ on:
       - 'release/*'
   pull_request:
     types: [closed]
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -18,7 +20,7 @@ concurrency:
 
 env:
   DEFAULT_BASE: main
-  RELEASE_BRANCH_REGEX: '^release\/[0-9]+\.[0-9]+\.[0-9]+$'
+  RELEASE_BRANCH_REGEX: '^release\/([0-9]+\.[0-9]+\.[0-9]+)$'
 
 jobs:
   open_release_pr:
@@ -30,8 +32,8 @@ jobs:
         id: version
         run: |
           BRANCH="${GITHUB_REF#refs/heads/}"
-          if [[ "$BRANCH" =~ ${{ env.RELEASE_BRANCH_REGEX }} ]]; then
-            VERSION="${BRANCH#release/}"
+          if [[ "$BRANCH" =~ $RELEASE_BRANCH_REGEX ]]; then
+            VERSION="${BASH_REMATCH[1]}"
             echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           else
             echo "Rama no cumple patrón release/x.y.z"; exit 1
@@ -98,8 +100,11 @@ jobs:
         id: ver
         run: |
           BR="${GITHUB_REF#refs/heads/}"
-          [[ "$BR" =~ ^release\/[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "Rama no cumple patrón"; exit 1; }
-          BASE="${BR#release/}"
+          if [[ "$BR" =~ $RELEASE_BRANCH_REGEX ]]; then
+            BASE="${BASH_REMATCH[1]}"
+          else
+            echo "Rama no cumple patrón"; exit 1;
+          fi
           echo "BASE_VERSION=$BASE" >> "$GITHUB_ENV"
           echo "BRANCH=$BR" >> "$GITHUB_ENV"
 
@@ -128,27 +133,27 @@ jobs:
           fi
 
       - name: Calcular próximo RC (N)
-        if: steps.dupe.outputs.already == 'false'
+        if: steps.pr_open.outputs.open == 'true' && steps.dupe.outputs.already == 'false'
         id: rcnum
         run: |
-          last=$(git tag -l "v${BASE_VERSION}-rc.*" | sed -E 's/^v[0-9]+\.[0-9]+\.[0-9]+-rc\.([0-9]+)$/\1/' | sort -V | tail -n1)
+          last=$(git tag -l "v${BASE_VERSION}-rc.*" | sed -En 's/^v[0-9]+\.[0-9]+\.[0-9]+-rc\.([0-9]+)$/\1/p' | sort -V | tail -n1)
           NEXT=$(( ${last:-0} + 1 ))
           echo "NEXT_RC=$NEXT" >> "$GITHUB_ENV"
           echo "tag=v${BASE_VERSION}-rc.${NEXT}" >> "$GITHUB_OUTPUT"
 
       - name: Crear tag RC (local)
-        if: steps.dupe.outputs.already == 'false'
+        if: steps.pr_open.outputs.open == 'true' && steps.dupe.outputs.already == 'false'
         run: |
           TAG="${{ steps.rcnum.outputs.tag }}"
           git tag "$TAG" "${GITHUB_SHA}"
 
       - name: Push tag RC con PAT (dispara build)
-        if: steps.dupe.outputs.already == 'false'
+        if: steps.pr_open.outputs.open == 'true' && steps.dupe.outputs.already == 'false'
         run: |
           git push origin "${{ steps.rcnum.outputs.tag }}"
 
       - name: Crear Pre-release en GitHub (usa GH_TOKEN del PAT)
-        if: steps.dupe.outputs.already == 'false'
+        if: steps.pr_open.outputs.open == 'true' && steps.dupe.outputs.already == 'false'
         run: |
           TAG="${{ steps.rcnum.outputs.tag }}"
           gh release create "$TAG" \
@@ -187,8 +192,8 @@ jobs:
         id: version
         run: |
           BRANCH="${{ github.event.pull_request.head.ref }}"
-          if [[ "$BRANCH" =~ ^release\/[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            VERSION="${BRANCH#release/}"
+          if [[ "$BRANCH" =~ $RELEASE_BRANCH_REGEX ]]; then
+            VERSION="${BASH_REMATCH[1]}"
             echo "VERSION=$VERSION" >> "$GITHUB_ENV"
           else
             echo "Rama no cumple patrón release/x.y.z"; exit 1
