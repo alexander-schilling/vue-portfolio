@@ -51,6 +51,7 @@ jobs:
             core.setOutput('exists', exists ? 'true' : 'false');
 
       - name: Crear rama y mergear main -> develop
+        id: create_branch
         if: steps.check_open_pr.outputs.exists == 'false'
         run: |
           set -e
@@ -58,6 +59,15 @@ jobs:
           BR="backport/develop-$DATE"
 
           git fetch --prune origin
+
+          # Verificar si hay commits nuevos para backportear
+          if git merge-base --is-ancestor origin/main origin/develop; then
+            echo "No hay commits nuevos para backportear desde main a develop."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "skip=false" >> "$GITHUB_OUTPUT"
 
           git checkout -b "$BR" origin/develop
 
@@ -78,7 +88,7 @@ jobs:
           echo "MERGE_RC=$MERGE_RC" >> "$GITHUB_ENV"
 
       - name: Abrir PR hacia develop
-        if: steps.check_open_pr.outputs.exists == 'false'
+        if: steps.check_open_pr.outputs.exists == 'false' && steps.create_branch.outputs.skip != 'true'
         uses: actions/github-script@v7
         with:
           script: |
@@ -100,7 +110,7 @@ jobs:
             });
 
       - name: Etiquetar PR (opcional)
-        if: steps.check_open_pr.outputs.exists == 'false'
+        if: steps.check_open_pr.outputs.exists == 'false' && steps.create_branch.outputs.skip != 'true'
         uses: actions/github-script@v7
         with:
           script: |
